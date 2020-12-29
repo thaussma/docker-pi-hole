@@ -28,6 +28,11 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      - name: Docker login
+        if: github.event_name != 'pull_request'
+        run: |
+          . gh-actions-vars.sh
+          echo "${{ secrets.DOCKERHUB_PASS }}" | docker login --username="${{ secrets.DOCKERHUB_USER }}" --password-stdin
       - name: Run Tests
         run: |
           echo "Building ${ARCH}-${DEBIAN_VERSION}"
