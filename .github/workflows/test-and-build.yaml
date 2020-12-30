@@ -11,8 +11,9 @@ on:
       - v*
   pull_request:
 
-#env:
-#  DOCKER_HUB_REPO: pihole
+env:
+  DOCKER_HUB_REPO: thaussma
+  DOCKER_HUB_IMAGE: pihole
 
 jobs:
   test-and-build:
